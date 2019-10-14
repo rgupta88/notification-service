@@ -1,0 +1,46 @@
+API To create client :
+POST : http://localhost:8080/notification/client/create
+
+BODY : 
+
+{
+	
+"clientId" : "2",
+"subscriptionType" : "GOLD"
+}
+
+API to send notification : 
+
+POST : http://localhost:8080/notification/send
+
+body :
+
+{
+	
+"clientId" : "2",
+"notificationChannel" : "SMS",
+"message" : {"payLoad" : "Test mesg"},
+"recipientList" : [ {
+	"userId" : "user_1",
+	"emailAddress" : "user_1@gmail.com",
+	"phoneNumber" : "1234567895",
+	"pushId" : "user_push_1"
+},
+{
+	"userId" : "user_2",
+	"emailAddress" : "user_2@gmail.com",
+	"phoneNumber" : "1234567895",
+	"pushId" : "user_push_2"
+},
+{
+	"userId" : "user_3",
+	"emailAddress" : "user_3@gmail.com",
+	"phoneNumber" : "1234567895",
+	"pushId" : "user_push_3"
+}]
+}
+
+// NOTE :
+// recipientList may be created as per clientid by separate rest call instead of sending with notification rest call.In that case  recipientList can be find from DB based on client id and notification can be send to all the recipient for client.
+
+
